@@ -673,6 +673,7 @@ Asteroid = function () {
       }
     }
     Game.explosionAt(other.x, other.y);
+    confettiAt(other.x, other.y);
     this.die();
   };
 };
@@ -1213,5 +1214,31 @@ $(function () {
     }
   });
 });
+
+function confettiAt(x, y) {
+  x = x / window.innerWidth;
+  y = y / window.innerHeight;
+
+  confetti({
+    ...defaults,
+    particleCount: 20,
+    scalar: 1,
+    origin: { x, y }
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 10,
+    scalar: 2,
+    origin: { x, y }
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 5,
+    scalar: 3,
+    origin: { x, y }
+  });
+}
 
 // vim: fdl=0
